@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+	<Appenders>
+		<Console Name="console" Target="SYSTEM_OUT">
+			<PatternLayout
+				Pattern="[%d{yyyy-MM-dd HH:mm:ss SSS}] [%-22t] [%-5p] [%l] %n%m%n" />
+		</Console>
+		<RollingFile Name="file" FileName="log/search/server.log"
+			Append="true" FilePattern="log/search/server.log.%d{yyyy-MM-dd}_%i.zip">
+			<PatternLayout
+				Pattern="[%d{yyyy-MM-dd HH:mm:ss SSS}] [%-22t] [%-5p] [%l] %n%m%n" />
+			<Policies>
+				<SizeBasedTriggeringPolicy Size="100 MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+			<DefaultRolloverStrategy Max="100"
+				compressionLevel="9" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger Name="com.goldmooon" Additivity="false" Level="info">
+			<Appender-Ref Ref="file" />
+			<Appender-Ref Ref="console" />
+		</Logger>
+
+		<Logger Name="org.springframework" Additivity="false"
+			Level="info">
+			<Appender-Ref Ref="file" />
+			<Appender-Ref Ref="console" />
+		</Logger>
+		<Logger Name="org.springframework.amqp.rabbit"
+			Additivity="false" Level="info">
+			<Appender-Ref Ref="file" />
+			<Appender-Ref Ref="console" />
+		</Logger>
+		<Logger Name="org.springframework.orm" Additivity="false"
+			Level="error">
+			<Appender-Ref Ref="file" />
+			<Appender-Ref Ref="console" />
+		</Logger>
+
+		
+
+		<Logger Name="jdbc" Additivity="false" Level="off">
+		</Logger>
+
+		<Root Level="debug">
+			<Appender-Ref Ref="file" />
+			<Appender-Ref Ref="console" />
+		</Root>
+	</Loggers>
+</Configuration>
