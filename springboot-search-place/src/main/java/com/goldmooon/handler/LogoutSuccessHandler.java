@@ -16,12 +16,12 @@ import com.goldmooon.utils.GoldMoonUtils;
 public class LogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler
 {
 
-    @Override
-    public void onLogoutSuccess(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException, ServletException
-    {
+	@Override
+	public void onLogoutSuccess(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException, ServletException
+	{
 
-        super.setDefaultTargetUrl(GoldMoonUtils.convertHttpToHttps(request) + "/login.html");
-        super.onLogoutSuccess(request, response, authentication);
-    }
+		super.setDefaultTargetUrl(GoldMoonUtils.convertHttpToHttps(request) + "/login.html");
+		super.onLogoutSuccess(request, response, authentication);
+	}
 
 }

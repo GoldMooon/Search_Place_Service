@@ -11,15 +11,18 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-public class LoginSuccessHandler implements AuthenticationSuccessHandler{
-	  private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();;
-	  
-	  @Override
-	  public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-	      Authentication authentication) throws IOException, ServletException {
-	      redirectStrategy.sendRedirect(request, response, "/main");
-	  }
+public class LoginSuccessHandler implements AuthenticationSuccessHandler
+{
+	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();;
 
 
+
+
+
+	@Override
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException
+	{
+		redirectStrategy.sendRedirect(request, response, "/main");
+	}
 
 }

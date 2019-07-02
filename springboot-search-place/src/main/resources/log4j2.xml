@@ -6,7 +6,8 @@
 				Pattern="[%d{yyyy-MM-dd HH:mm:ss SSS}] [%-22t] [%-5p] [%l] %n%m%n" />
 		</Console>
 		<RollingFile Name="file" FileName="log/search/server.log"
-			Append="true" FilePattern="log/search/server.log.%d{yyyy-MM-dd}_%i.zip">
+			Append="true"
+			FilePattern="log/search/server.log.%d{yyyy-MM-dd}_%i.zip">
 			<PatternLayout
 				Pattern="[%d{yyyy-MM-dd HH:mm:ss SSS}] [%-22t] [%-5p] [%l] %n%m%n" />
 			<Policies>
@@ -39,7 +40,7 @@
 			<Appender-Ref Ref="console" />
 		</Logger>
 
-		
+
 
 		<Logger Name="jdbc" Additivity="false" Level="off">
 		</Logger>

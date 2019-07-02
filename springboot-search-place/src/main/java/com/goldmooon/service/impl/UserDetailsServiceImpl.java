@@ -17,29 +17,34 @@ import com.goldmooon.model.User;
 import com.goldmooon.repository.UserRepository;
 
 @Component
-public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
-    UserRepository userRepository;
- 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        
-        if (user != null)
-        {
-        	for (Role role : user.getRoles()) {
-        		grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-        	}
-        }
-        else
-        {
-        	throw new SearchException("user is not exits.");
-        }
- 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), 
-                                                                      user.getPassword(),
-                                                                      grantedAuthorities);
-    }
+public class UserDetailsServiceImpl implements UserDetailsService
+{
+	@Autowired
+	UserRepository userRepository;
+
+
+
+
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
+	{
+		User user = userRepository.findByUsername(username);
+		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+
+		if ( user != null )
+		{
+			for ( Role role : user.getRoles() )
+			{
+				grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+			}
+		}
+		else
+		{
+			throw new SearchException("user is not exits.");
+		}
+
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+	}
 
 }

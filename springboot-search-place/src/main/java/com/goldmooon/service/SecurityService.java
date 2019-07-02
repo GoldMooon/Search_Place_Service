@@ -1,7 +1,12 @@
 package com.goldmooon.service;
 
-public interface SecurityService {
-	  String findLoggedInUsername();
-	  void autologin(String username, String password);
-	  }
+public interface SecurityService
+{
+	String findLoggedInUsername();
 
+
+
+
+
+	void autologin(String username, String password);
+}
